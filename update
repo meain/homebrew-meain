@@ -1,0 +1,28 @@
+#!/bin/sh
+
+[ -z "$1" ] && echo "Provide package name" && exit 1
+
+FORMUA="$1"
+SEARCH_STRING="$(grep -E "^$FORMUA" .updatestrings | cut -d' ' -f2)"
+
+GITHUB_OUTPUT="$(curl --silent "https://api.github.com/repos/meain/$FORMUA/releases/latest")"
+LATEST_RELEASE="$(echo "$GITHUB_OUTPUT" | grep -o "https://github.com/meain/$FORMUA/releases/download/.*$SEARCH_STRING" | head -n1)"
+TAG_NAME="$(echo "$GITHUB_OUTPUT" | grep -E "tag_name" | head -n1 | sed 's/.*"\([^"]*\)",$/\1/')"
+
+rm -f /tmp/release || echo
+curl -fLs "$LATEST_RELEASE" > /tmp/release
+SHA="$(sha256sum < /tmp/release | cut -d' ' -f1)"
+
+echo "$LATEST_RELEASE"
+echo "$TAG_NAME"
+echo "$SHA"
+
+printf "version (%s): " "$TAG_NAME"
+read -r version
+[ -z "$version" ] && version="$TAG_NAME"
+
+cat "Formula/$FORMUA.rb" | sed "s|^  url .*|  url \"$LATEST_RELEASE\"|" |
+    sed "s|^  sha256 .*|  sha256 \"$SHA\"|" |
+    sed "s|^  version .*|  version \"$version\"|" > /tmp/newrelease
+
+mv /tmp/newrelease "Formula/$FORMUA.rb"
