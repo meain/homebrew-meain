@@ -1,5 +1,5 @@
 class Corpcrap < Formula
-  desc "Download all the youtube vids that you copy to clipboard"
+  desc "Just prints out something that sounds fancy, but is total bullshit."
   homepage "https://github.com/meain/corpcrap"
   url "https://github.com/meain/corpcrap/releases/download/0.0.1/corpcrap_0.0.1_darwin_amd64.tar.gz"
   version "0.0.1"
