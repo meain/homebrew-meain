@@ -6,6 +6,7 @@ class Tojson < Formula
   sha256 "d91c890995618e9862d7eca91275c95ce612aba0c570df6093bf89c8d8b4fb9a"
 
   def install
+    mv Dir.glob("tojson-*").first, "foo"
     bin.install "tojson"
   end
 
