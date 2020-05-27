@@ -1,4 +1,4 @@
-class ToJson < Formula
+class Tojson < Formula
   desc "Convert from yaml and toml to json"
   homepage "https://github.com/meain/tojson"
   url "https://github.com/meain/tojson/releases/download/0.1.1/tojson-macos-amd64"
