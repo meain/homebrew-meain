@@ -1,8 +1,7 @@
 name: Update repos
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron:  '1 3 * * *'
 jobs:
   updateBrews:
     runs-on: ubuntu-latest
@@ -12,7 +11,7 @@ jobs:
           fetch-depth: 0
       - name: Update repos
         run: |
-          cat .updatestrings|head -n2|awk '{print $1}'|SILENT_UPDATE=1 xargs -L1 -I{} ./update {}
+          cat .updatestrings|awk '{print $1}'|SILENT_UPDATE=1 xargs -L1 -I{} ./update {}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:
