@@ -1,0 +1,21 @@
+name: Update repos
+on:
+  schedule:
+    - cron:  '1 * * * *'
+jobs:
+  updateAuthors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Update repos
+        run: |
+          git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          commit-message: update brews
+          title: Update repos
+          body: Update version of brews
+          branch: update-brews
