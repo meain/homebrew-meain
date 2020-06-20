@@ -1,7 +1,7 @@
 name: Update repos
 on:
   schedule:
-    - cron:  '1 * * * *'
+    - cron:  '1 3 * * *'
 jobs:
   updateAuthors:
     runs-on: ubuntu-latest
@@ -11,7 +11,7 @@ jobs:
           fetch-depth: 0
       - name: Update repos
         run: |
-          git log --format='%aN <%aE>%n%cN <%cE>' | sort -u > AUTHORS
+          cat .updatestrings|head -n2|awk '{print $1}'|SILENT_UPDATE=1 xargs -L1 -I{} ./update {}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:

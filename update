@@ -18,7 +18,7 @@ echo "$TAG_NAME"
 echo "$SHA"
 
 printf "version (%s): " "$TAG_NAME"
-[ -z "$2" ] && read -r version
+[ -z "$SILENT" ] && read -r version
 [ -z "$version" ] && version="$TAG_NAME"
 
 cat "Formula/$FORMUA.rb" | sed "s|^  url .*|  url \"$LATEST_RELEASE\"|" |
