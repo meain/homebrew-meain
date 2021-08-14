@@ -3,3 +3,4 @@ corpcrap darwin_amd64.tar.gz
 gloc Darwin_x86_64.tar.gz
 tojson macos-amd64
 quickserve macos-amd64
+toffee macos-amd64
