@@ -1,9 +1,9 @@
 class Toffee < Formula
   desc "Universal test picker"
   homepage "https://github.com/meain/toffee"
-  url "https://github.com/meain/toffee/releases/download/0.4.2/toffee-macos-amd64"
-  version "0.4.2"
-  sha256 "caed8532b6747ecd195fc25cd59a8e254dd5693c294fd5bebf684a3a9895ca03"
+  url "https://github.com/meain/toffee/releases/download/0.5.1/toffee-macos-amd64"
+  version "0.5.1"
+  sha256 "b8b4d95b4214df141fa36a4e452864d31d3b238029e22fe19cb2b439a0eff824"
 
   def install
     mv Dir.glob("toffee-*").first, "toffee"
