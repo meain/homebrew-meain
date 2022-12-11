@@ -1,9 +1,9 @@
 class Quickserve < Formula
   desc "Quickly serve a dir"
   homepage "https://github.com/meain/quickserve"
-  url "https://github.com/meain/quickserve/releases/download/0.5.0/quickserve-macos-amd64"
-  version "0.5.0"
-  sha256 "cd740275815dc5df905a036c5512e95b035f65637aa5cb5f2847669e3ced674a"
+  url "https://github.com/meain/quickserve/releases/download/0.5.2/quickserve-macos-amd64"
+  version "0.5.2"
+  sha256 "22f344a9ab4adc8ad06adc59b4d25a8f31bea671faeb747aefb09294f1fb7331"
 
   def install
     mv Dir.glob("quickserve-*").first, "quickserve"
