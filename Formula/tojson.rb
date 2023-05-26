@@ -1,9 +1,9 @@
 class Tojson < Formula
   desc "Convert from yaml and toml to json"
   homepage "https://github.com/meain/tojson"
-  url "https://github.com/meain/tojson/releases/download/0.3.2/tojson-macos-amd64"
-  version "0.3.2"
-  sha256 "975e36708a5c5adb7ac07fe57873970e7ed29468deb7c2ff47609bd6a2a83e02"
+  url ""
+  version ""
+  sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 
   def install
     mv Dir.glob("tojson-*").first, "tojson"
